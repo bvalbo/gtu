@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grimstad Ultraløp
 
-## Getting Started
+Dette er den offisielle nettsiden for Grimstad Ultraløp, som arrangeres 18. mai 2025. Nettsiden er bygget med NextJS og Tailwind CSS og drives av Vercel.
 
-First, run the development server:
+## Funksjoner
+
+- **Nedtelling:** Dynamisk nedtelling til løpsstart, som endrer seg til en tidtaker under løpet
+- **Løpsinformasjon:** Detaljert informasjon om løypen, tidspunkter og praktiske detaljer
+- **Live-tracking:** Visning av løpernes GPS-posisjoner under løpet via Strava Beacon og Garmin LiveTrack
+- **Resultatliste:** Visning av resultater etter at løpet er avsluttet
+
+## Teknologier
+
+- [NextJS](https://nextjs.org/) - React-rammeverk for server-side rendering
+- [TypeScript](https://www.typescriptlang.org/) - Typet JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS-rammeverk
+- [Vercel](https://vercel.com/) - Hosting og kontinuerlig integrasjon
+
+## Løpsfaser
+
+Nettsiden endrer seg automatisk basert på løpets fase:
+
+1. **Før løpet:** Viser nedtelling og viktig informasjon før løpet
+2. **Under løpet:** Viser timer og live-tracking av løperne
+3. **Etter løpet:** Viser resultatliste og oppsummering
+
+## Oppsett for utvikling
+
+For å sette opp prosjektet lokalt:
 
 ```bash
+# Klone prosjektet
+git clone https://github.com/ditt-brukernavn/grimstad-ultrarun.git
+cd grimstad-ultrarun
+
+# Installere avhengigheter
+npm install
+
+# Starte utviklingsserveren
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Besøk deretter `http://localhost:3000` i nettleseren din.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Redigere live-tracking og resultater
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For å oppdatere live-tracking og resultater:
 
-## Learn More
+1. Åpne `/lib/constants.ts`
+2. Oppdater `LIVE_TRACKING_LINKS` og `RESULTS_TEMPLATE` med nye data
+3. Commit og push endringene (Vercel vil automatisk publisere den nye versjonen)
 
-To learn more about Next.js, take a look at the following resources:
+## Bidrag
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Bidrag og forslag til forbedringer er velkomne. Opprett en Issue eller Pull Request for å diskutere endringer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Lisens
 
-## Deploy on Vercel
+Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) for detaljer.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Kontakt
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ved spørsmål eller problemer, kontakt arrangørene av Grimstad Ultraløp.
