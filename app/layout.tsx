@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Grimstad Terrengultraløp',
   description: 'Offisiell side for Grimstad Terrengultraløp - 18. mai 2025',
   metadataBase: new URL('https://grimstad.run'),
+  icons: {
+    icon: '/favicon.ico', 
+  },
   openGraph: {
     title: 'Grimstad Terrengultraløp',
     description: 'Løp med oss gjennom vakre Grimstad!',
@@ -39,6 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nb">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
         <main className="min-h-screen bg-gradient-dark">
           {children}
