@@ -74,7 +74,7 @@ export default function EventInfo() {
           <div className="bg-forest-800 p-4 rounded-lg mb-8 border border-forest-700">
             <h2 className="text-2xl font-bold mb-2 text-earth-100">Løpet er over</h2>
             <p className="text-forest-200">
-              Tusen takk til alle som deltok i årets Grimstad Ultraløp! Se resultatlisten nedenfor.
+              Tusen takk til alle som deltok i årets Grimstad Terrengultraløp! Se resultatlisten nedenfor.
             </p>
           </div>
         );

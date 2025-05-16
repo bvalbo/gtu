@@ -37,7 +37,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Grimstad Ultraløp</h1>
+                <h1 className="text-xl font-bold text-white">Grimstad Terrengultraløp</h1>
                 <p className="text-earth-300 text-sm">18. mai 2025</p>
               </div>
             </div>

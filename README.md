@@ -1,6 +1,6 @@
-# Grimstad Ultraløp
+# Grimstad Terrengultraløp
 
-Dette er den offisielle nettsiden for Grimstad Ultraløp, som arrangeres 18. mai 2025. Nettsiden er bygget med NextJS og Tailwind CSS og drives av Vercel.
+Dette er den offisielle nettsiden for Grimstad Terrengultraløp, som arrangeres 18. mai 2025. Nettsiden er bygget med NextJS og Tailwind CSS og drives av Vercel.
 
 ## Funksjoner
 
@@ -60,4 +60,4 @@ Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) for de
 
 ## Kontakt
 
-Ved spørsmål eller problemer, kontakt arrangørene av Grimstad Ultraløp.
+Ved spørsmål eller problemer, kontakt arrangørene av Grimstad Terrengultraløp.

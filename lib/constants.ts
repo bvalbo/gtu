@@ -27,7 +27,7 @@ export const IMPORTANT_TIMES = [
 
 // Standardtekster
 export const TEXTS = {
-  title: 'Grimstad Ultraløp',
+  title: 'Grimstad Terrengultraløp',
   subtitle: '18. mai 2025',
   disclaimer: 'Turen er på eget ansvar!',
   facebookText: 'Viktig å trykke "Skal" på Facebook-arrangementet',
