@@ -8,33 +8,52 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Hovedfarger for nettsiden
-        'primary': {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+        // Natural palette inspired by the trail run poster
+        'forest': {
+          50: '#f2f6f3',
+          100: '#e0eae3',
+          200: '#c1d5c8',
+          300: '#9bbaaa',
+          400: '#769c8a',
+          500: '#5b8070',
+          600: '#476858',
+          700: '#3b5548',
+          800: '#32453b',
+          900: '#2b3b32',
+          950: '#162119',
         },
-        // Aksentfarger
-        'accent': {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
+        // Earthy brown tones
+        'earth': {
+          50: '#f9f6f2',
+          100: '#f0e9e0',
+          200: '#e2d3c1',
+          300: '#d2b89d',
+          400: '#c29c7a',
+          500: '#b58661',
+          600: '#a06b4f',
+          700: '#855642',
+          800: '#70483a',
+          900: '#5f3e33',
+          950: '#331f19',
+        },
+        // Trail color for paths
+        'trail': {
+          100: '#f0e4d6',
+          200: '#e2ceb3',
+          300: '#d2b390',
+          400: '#c4996d',
+          500: '#b17f4a',
+          600: '#8c643b',
+          700: '#6e4e2f',
+          800: '#553b25',
+          900: '#40301f',
+        },
+        // Slate for darker backgrounds
+        'slate': {
+          800: '#2d3748',
+          850: '#222b3a',
+          900: '#1a202c',
+          950: '#0f141e',
         },
       },
       fontFamily: {
@@ -46,6 +65,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-trail': 'linear-gradient(to bottom, rgb(32, 46, 36), rgb(51, 31, 25))',
       },
       gridTemplateColumns: {
         'auto-fill-200': 'repeat(auto-fill, minmax(200px, 1fr))',

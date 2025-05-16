@@ -43,16 +43,16 @@ export default function RootLayout({
         <main className="min-h-screen bg-gradient-dark">
           {children}
         </main>
-        <footer className="bg-gray-900 py-6">
+        <footer className="bg-forest-950 py-6">
           <div className="container mx-auto px-4">
-            <div className="text-center text-gray-400 text-sm">
+            <div className="text-center text-forest-300 text-sm">
               <p>© {new Date().getFullYear()} Grimstad Ultraløp</p>
               <p className="mt-2">
                 <a 
                   href="https://github.com/ditt-brukernavn/grimstad-ultrarun" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-forest-100 transition-colors"
                 >
                   Kildekode på GitHub
                 </a>

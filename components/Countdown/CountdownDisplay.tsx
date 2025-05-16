@@ -16,11 +16,11 @@ export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDi
     const baseClasses = "flex justify-center items-center space-x-4 py-6 px-4 rounded-lg";
     
     if (racePhase === RacePhase.BEFORE_RACE) {
-      return `${baseClasses} bg-gradient-to-r from-blue-900 to-indigo-900 shadow-lg`;
+      return `${baseClasses} bg-gradient-to-r from-forest-800 to-earth-800 shadow-lg`;
     } else if (racePhase === RacePhase.DURING_RACE) {
-      return `${baseClasses} bg-gradient-to-r from-green-800 to-teal-800`;
+      return `${baseClasses} bg-gradient-to-r from-forest-700 to-earth-700`;
     } else {
-      return `${baseClasses} bg-gradient-to-r from-gray-800 to-gray-700`;
+      return `${baseClasses} bg-gradient-to-r from-forest-800 to-earth-900`;
     }
   };
   
@@ -45,27 +45,27 @@ export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDi
       {showDays && (
         <div className={digitClasses()}>
           <span className="text-white font-mono font-bold">{days}</span>
-          <span className="text-gray-300 text-xs mt-1">DAGER</span>
+          <span className="text-earth-100 text-xs mt-1">DAGER</span>
         </div>
       )}
       
       <div className={digitClasses()}>
         <span className="text-white font-mono font-bold">{hours.toString().padStart(2, '0')}</span>
-        <span className="text-gray-300 text-xs mt-1">TIMER</span>
+        <span className="text-earth-100 text-xs mt-1">TIMER</span>
       </div>
       
       <div className="text-white text-4xl md:text-6xl font-bold">:</div>
       
       <div className={digitClasses()}>
         <span className="text-white font-mono font-bold">{minutes.toString().padStart(2, '0')}</span>
-        <span className="text-gray-300 text-xs mt-1">MIN</span>
+        <span className="text-earth-100 text-xs mt-1">MIN</span>
       </div>
       
       <div className="text-white text-4xl md:text-6xl font-bold">:</div>
       
       <div className={digitClasses()}>
         <span className="text-white font-mono font-bold">{seconds.toString().padStart(2, '0')}</span>
-        <span className="text-gray-300 text-xs mt-1">SEK</span>
+        <span className="text-earth-100 text-xs mt-1">SEK</span>
       </div>
     </div>
   );

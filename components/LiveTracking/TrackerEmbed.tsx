@@ -18,14 +18,14 @@ export default function TrackerEmbed({ name, url }: TrackerEmbedProps) {
   };
   
   return (
-    <div className="bg-gray-800 rounded-lg overflow-hidden">
-      <div className="p-3 bg-gray-700 flex items-center justify-between">
-        <h3 className="font-semibold text-white">{name}</h3>
+    <div className="bg-forest-800 rounded-lg overflow-hidden border border-forest-700">
+      <div className="p-3 bg-forest-700 flex items-center justify-between">
+        <h3 className="font-semibold text-earth-100">{name}</h3>
         <a 
           href={url} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-300 text-sm"
+          className="text-earth-300 hover:text-earth-200 text-sm"
         >
           Åpne i nytt vindu
         </a>

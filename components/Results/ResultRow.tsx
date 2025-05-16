@@ -16,7 +16,7 @@ export default function ResultRow({ runner }: ResultRowProps) {
     } else if (runner.position === 2) {
       return `${baseClasses} text-gray-300`; // Sølv
     } else if (runner.position === 3) {
-      return `${baseClasses} text-yellow-700`; // Bronse
+      return `${baseClasses} text-earth-500`; // Bronse - natural brown tone
     } else {
       return `${baseClasses} text-white`;
     }
@@ -34,14 +34,14 @@ export default function ResultRow({ runner }: ResultRowProps) {
       );
     } else if (runner.position === 3) {
       return (
-        <span className="mr-1 text-yellow-700">🥉</span>
+        <span className="mr-1 text-earth-500">🥉</span>
       );
     }
     return null;
   };
   
   return (
-    <tr className="hover:bg-gray-800 transition-colors">
+    <tr className="hover:bg-forest-800 transition-colors">
       <td className="py-3 px-4">
         <span className={getPositionClasses()}>
           {getPositionIcon()}
@@ -49,8 +49,8 @@ export default function ResultRow({ runner }: ResultRowProps) {
         </span>
       </td>
       <td className="py-3 px-4 text-white">{runner.name}</td>
-      <td className="py-3 px-4 font-mono text-green-400">{runner.time}</td>
-      <td className="py-3 px-4 text-gray-400 italic">{runner.notes}</td>
+      <td className="py-3 px-4 font-mono text-forest-300">{runner.time}</td>
+      <td className="py-3 px-4 text-forest-400 italic">{runner.notes}</td>
     </tr>
   );
 }

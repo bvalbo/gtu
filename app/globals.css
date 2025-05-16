@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 17, 24, 39;
+  --background-rgb: 22, 33, 25;
 }
 
 body {
@@ -35,13 +35,13 @@ body {
 
 /* Gradient bakgrunn */
 .bg-gradient-dark {
-  background: linear-gradient(to bottom, rgb(17, 24, 39), rgb(30, 41, 59));
+  background: linear-gradient(to bottom, rgb(22, 33, 25), rgb(51, 31, 25));
 }
 
 /* Nedtelling stiler */
 .countdown-container {
-  background: linear-gradient(to right, rgb(30, 41, 90), rgb(30, 58, 138));
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(to right, rgb(71, 104, 88), rgb(106, 78, 47));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 }
 
 .countdown-digit {

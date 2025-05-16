@@ -37,20 +37,20 @@ export default function Results() {
   const sortedResults = [...results].sort((a, b) => a.position - b.position);
   
   return (
-    <section className="py-8 border-t-2 border-gray-800">
-      <h2 className="text-3xl font-bold mb-6">Resultater</h2>
+    <section className="py-8 border-t-2 border-forest-700">
+      <h2 className="text-3xl font-bold mb-6 text-earth-100">Resultater</h2>
       
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-800">
+          <thead className="bg-forest-800">
             <tr>
-              <th className="py-3 px-4 text-left text-gray-300 font-semibold">#</th>
-              <th className="py-3 px-4 text-left text-gray-300 font-semibold">Navn</th>
-              <th className="py-3 px-4 text-left text-gray-300 font-semibold">Tid</th>
-              <th className="py-3 px-4 text-left text-gray-300 font-semibold">Merknader</th>
+              <th className="py-3 px-4 text-left text-forest-100 font-semibold">#</th>
+              <th className="py-3 px-4 text-left text-forest-100 font-semibold">Navn</th>
+              <th className="py-3 px-4 text-left text-forest-100 font-semibold">Tid</th>
+              <th className="py-3 px-4 text-left text-forest-100 font-semibold">Merknader</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-700">
+          <tbody className="divide-y divide-forest-700">
             {sortedResults.map((runner) => (
               <ResultRow key={runner.position} runner={runner} />
             ))}
@@ -59,8 +59,8 @@ export default function Results() {
       </div>
       
       {sortedResults.length === 0 && (
-        <div className="bg-gray-800 p-6 rounded-lg text-center mt-4">
-          <p className="text-gray-300">Resultatene vil bli publisert etter løpet.</p>
+        <div className="bg-forest-800 p-6 rounded-lg text-center mt-4 border border-forest-700">
+          <p className="text-forest-200">Resultatene vil bli publisert etter løpet.</p>
         </div>
       )}
     </section>

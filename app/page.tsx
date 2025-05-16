@@ -26,19 +26,19 @@ export default function Home() {
   }, []);
   
   return (
-    <div className="min-h-screen bg-gray-900">
-      <header className="bg-gray-800 border-b border-gray-700">
+    <div className="min-h-screen bg-gradient-trail">
+      <header className="bg-forest-900 border-b border-forest-800">
         <Container>
           <div className="py-4 flex items-center justify-between">
             <div className="flex items-center">
               <div className="mr-3">
-                <div className="h-12 w-12 rounded-full bg-blue-800 flex items-center justify-center text-white font-bold text-xl">
+                <div className="h-12 w-12 rounded-full bg-earth-700 flex items-center justify-center text-white font-bold text-xl">
                   GU
                 </div>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Grimstad Ultraløp</h1>
-                <p className="text-gray-400 text-sm">18. mai 2025</p>
+                <p className="text-earth-300 text-sm">18. mai 2025</p>
               </div>
             </div>
           </div>
@@ -52,34 +52,40 @@ export default function Home() {
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
-            <EventInfo />
-            <LiveTracking />
-            <Results />
+            <section id="loypeinfo">
+              <EventInfo />
+            </section>
+            <section id="drikkestasjon">
+              <LiveTracking />
+            </section>
+            <section id="malgang">
+              <Results />
+            </section>
           </div>
           
           <div className="lg:col-span-1">
-            <div className="bg-gray-800 rounded-lg overflow-hidden sticky top-6">
-              <div className="p-4 bg-gray-700">
+            <div className="bg-forest-900 rounded-lg overflow-hidden sticky top-6">
+              <div className="p-4 bg-forest-800">
                 <h2 className="font-bold text-xl">Hurtiglenker</h2>
               </div>
               <div className="p-4">
                 <nav className="space-y-2">
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded transition-colors text-gray-300 hover:text-white">
+                  <a href="#loypeinfo" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Løypeinfo
                   </a>
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded transition-colors text-gray-300 hover:text-white">
+                  <a href="#drikkestasjon" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Drikkestasjon
                   </a>
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded transition-colors text-gray-300 hover:text-white">
+                  <a href="#malgang" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Målgang
                   </a>
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded transition-colors text-gray-300 hover:text-white">
+                  <a href="#kontaktpersoner" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Kontaktpersoner
                   </a>
                 </nav>
               </div>
               
-              <div className="p-4 border-t border-gray-700">
+              <div className="p-4 border-t border-forest-700">
                 <h3 className="font-medium mb-2">Været i Grimstad</h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
@@ -88,14 +94,14 @@ export default function Home() {
                     </svg>
                     <span className="text-white text-lg">18°C</span>
                   </div>
-                  <span className="text-gray-400">Sol, lett bris</span>
+                  <span className="text-forest-200">Sol, lett bris</span>
                 </div>
               </div>
               
               {racePhase === RacePhase.BEFORE_RACE && (
-                <div className="p-4 bg-blue-900 bg-opacity-50">
+                <div className="p-4 bg-earth-800 bg-opacity-50">
                   <h3 className="font-medium mb-2">Påminnelse</h3>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-earth-100 text-sm">
                     Husk å laste inn løypen på klokken din og teste den i forkant!
                   </p>
                 </div>

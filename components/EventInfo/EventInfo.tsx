@@ -28,26 +28,26 @@ export default function EventInfo() {
         return (
           <>
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Viktige tider</h2>
+              <h2 className="text-2xl font-bold mb-4 text-earth-100">Viktige tider</h2>
               <div className="space-y-4">
                 {IMPORTANT_TIMES.map((time, index) => (
-                  <div key={index} className="bg-gray-800 p-4 rounded-lg">
-                    <h3 className="text-xl font-medium text-white">{time.title}: <span className="text-yellow-400">{time.time}</span></h3>
-                    <p className="text-gray-300">{time.location}</p>
+                  <div key={index} className="bg-forest-800 p-4 rounded-lg border border-forest-700">
+                    <h3 className="text-xl font-medium text-white">{time.title}: <span className="text-earth-300">{time.time}</span></h3>
+                    <p className="text-forest-200">{time.location}</p>
                   </div>
                 ))}
               </div>
             </div>
             
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Facebook-arrangement</h2>
-              <div className="bg-gray-800 p-4 rounded-lg">
-                <p className="text-gray-300 mb-2">{TEXTS.facebookText}</p>
+              <h2 className="text-2xl font-bold mb-4 text-earth-100">Facebook-arrangement</h2>
+              <div className="bg-forest-800 p-4 rounded-lg border border-forest-700">
+                <p className="text-forest-200 mb-2">{TEXTS.facebookText}</p>
                 <a 
                   href={TEXTS.facebookLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 underline inline-flex items-center"
+                  className="text-earth-300 hover:text-earth-200 underline inline-flex items-center"
                 >
                   Åpne Facebook-arrangement
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,9 +61,9 @@ export default function EventInfo() {
         
       case RacePhase.DURING_RACE:
         return (
-          <div className="bg-green-900 p-4 rounded-lg mb-8 animate-pulse">
-            <h2 className="text-2xl font-bold mb-2">Løpet pågår!</h2>
-            <p className="text-gray-300">
+          <div className="bg-forest-700 p-4 rounded-lg mb-8 animate-pulse border border-forest-600">
+            <h2 className="text-2xl font-bold mb-2 text-earth-100">Løpet pågår!</h2>
+            <p className="text-forest-100">
               Løpet startet klokken 13:00 den 18. mai. Følg med på live-tracking seksjonen nedenfor for å se hvordan det går med løperne!
             </p>
           </div>
@@ -71,9 +71,9 @@ export default function EventInfo() {
         
       case RacePhase.AFTER_RACE:
         return (
-          <div className="bg-gray-800 p-4 rounded-lg mb-8">
-            <h2 className="text-2xl font-bold mb-2">Løpet er over</h2>
-            <p className="text-gray-300">
+          <div className="bg-forest-800 p-4 rounded-lg mb-8 border border-forest-700">
+            <h2 className="text-2xl font-bold mb-2 text-earth-100">Løpet er over</h2>
+            <p className="text-forest-200">
               Tusen takk til alle som deltok i årets Grimstad Ultraløp! Se resultatlisten nedenfor.
             </p>
           </div>
@@ -86,10 +86,10 @@ export default function EventInfo() {
   
   return (
     <section className="py-8">
-      <h1 className="text-4xl font-bold mb-2 text-white">{TEXTS.title}</h1>
-      <p className="text-xl text-gray-300 mb-6">{TEXTS.subtitle}</p>
+      <h1 className="text-4xl font-bold mb-2 text-earth-100">{TEXTS.title}</h1>
+      <p className="text-xl text-forest-200 mb-6">{TEXTS.subtitle}</p>
       
-      <div className="bg-red-800 p-4 rounded-lg mb-8">
+      <div className="bg-earth-800 p-4 rounded-lg mb-8 border border-earth-700">
         <p className="text-white font-bold text-lg">{TEXTS.disclaimer}</p>
       </div>
       
@@ -98,40 +98,40 @@ export default function EventInfo() {
       <CourseInfo />
       
       <div className="my-8">
-        <h2 className="text-2xl font-bold mb-4">{TEXTS.aidStation.title}</h2>
-        <div className="bg-gray-800 p-4 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4 text-earth-100">{TEXTS.aidStation.title}</h2>
+        <div className="bg-forest-800 p-4 rounded-lg border border-forest-700">
           <p className="text-white mb-2">
             <span className="font-semibold">Plassering:</span> {TEXTS.aidStation.location}
           </p>
-          <p className="text-gray-300 mb-2">{TEXTS.aidStation.offerings}</p>
-          <p className="text-gray-300">{TEXTS.aidStation.dropBag}</p>
+          <p className="text-forest-200 mb-2">{TEXTS.aidStation.offerings}</p>
+          <p className="text-forest-200">{TEXTS.aidStation.dropBag}</p>
         </div>
       </div>
       
       <div className="my-8">
-        <h2 className="text-2xl font-bold mb-4">{TEXTS.finish.title}</h2>
-        <div className="bg-gray-800 p-4 rounded-lg">
-          <ul className="space-y-2 text-gray-300">
+        <h2 className="text-2xl font-bold mb-4 text-earth-100">{TEXTS.finish.title}</h2>
+        <div className="bg-forest-800 p-4 rounded-lg border border-forest-700">
+          <ul className="space-y-2 text-forest-200">
             <li className="flex items-start">
-              <svg className="h-5 w-5 text-yellow-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 text-earth-400 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {TEXTS.finish.firepit}
             </li>
             <li className="flex items-start">
-              <svg className="h-5 w-5 text-yellow-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 text-earth-400 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {TEXTS.finish.grilling}
             </li>
             <li className="flex items-start">
-              <svg className="h-5 w-5 text-yellow-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 text-earth-400 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {TEXTS.finish.stayingAfter}
             </li>
             <li className="flex items-start">
-              <svg className="h-5 w-5 text-yellow-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 text-earth-400 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {TEXTS.finish.headlamp}

@@ -32,16 +32,16 @@ export default function LiveTracking() {
   }
   
   return (
-    <section className="py-8 border-t-2 border-gray-800">
-      <h2 className="text-3xl font-bold mb-6 flex items-center">
-        <span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+    <section className="py-8 border-t-2 border-forest-700">
+      <h2 className="text-3xl font-bold mb-6 flex items-center text-earth-100">
+        <span className="inline-block w-3 h-3 bg-forest-400 rounded-full mr-2 animate-pulse"></span>
         Live-tracking
       </h2>
       
       {LIVE_TRACKING_LINKS.length === 0 ? (
-        <div className="bg-gray-800 p-6 rounded-lg text-center">
-          <p className="text-gray-300 mb-4">Ingen live-tracking-lenker er lagt til ennå.</p>
-          <p className="text-gray-400 text-sm">
+        <div className="bg-forest-800 p-6 rounded-lg text-center border border-forest-700">
+          <p className="text-forest-200 mb-4">Ingen live-tracking-lenker er lagt til ennå.</p>
+          <p className="text-forest-300 text-sm">
             Live-tracking-lenker vil bli lagt til når løpet starter. Oppdater siden senere.
           </p>
         </div>
@@ -57,9 +57,9 @@ export default function LiveTracking() {
         </div>
       )}
       
-      <div className="mt-8 p-4 bg-blue-900 bg-opacity-30 rounded-lg">
-        <h3 className="text-xl font-semibold mb-2">Har du en tracking-lenke?</h3>
-        <p className="text-gray-300 mb-4">
+      <div className="mt-8 p-4 bg-earth-800 bg-opacity-40 rounded-lg border border-forest-700">
+        <h3 className="text-xl font-semibold mb-2 text-earth-100">Har du en tracking-lenke?</h3>
+        <p className="text-forest-200 mb-4">
           Send din Strava Beacon eller Garmin LiveTrack-lenke til Bjørnar på telefon: 924 92 316
         </p>
       </div>
