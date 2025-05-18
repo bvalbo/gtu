@@ -52,9 +52,9 @@ export const TEXTS = {
 
 // Eksempel-resultatliste (kan redigeres manuelt etter løpet)
 export const RESULTS_TEMPLATE = [
-  { position: 1, name: 'Per', time: '10:00:00', notes: '' },
-  { position: 2, name: 'Pål', time: '11:00:00', notes: '' },
-  { position: 3, name: 'Espen', time: '12:00:00', notes: '' }
+  { position: 1, name: 'Per', time: '00:00:00', notes: '' },
+  { position: 2, name: 'Pål', time: '00:00:00', notes: '' },
+  { position: 3, name: 'Espen', time: '00:00:00', notes: '' }
 ];
 
 // Eksempel på live-tracking-linker (kan oppdateres før løpet)

@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     domains: ['strava.com', 'beacon.strava.com', 'connect.garmin.com', 'livetrack.garmin.com'],
   },
+  // Set output to export for static site generation without SSR
+  output: 'export',
   
   // Redirect root domain to www subdomain (optional)
   async redirects() {

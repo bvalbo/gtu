@@ -10,35 +10,41 @@ import ResultRow from './ResultRow';
 export default function Results() {
   const [results, setResults] = useState<Runner[]>(RESULTS_TEMPLATE);
   const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Always visible now
   
   useEffect(() => {
     const currentPhase = determineRacePhase();
     setRacePhase(currentPhase);
     
-    // Vis bare resultater etter løpet
-    setIsVisible(currentPhase === RacePhase.AFTER_RACE);
-    
     // Sjekk løpsfase hvert minutt
     const timer = setInterval(() => {
       const phase = determineRacePhase();
       setRacePhase(phase);
-      setIsVisible(phase === RacePhase.AFTER_RACE);
     }, 60000);
     
     return () => clearInterval(timer);
   }, []);
   
-  if (!isVisible) {
-    return null;
-  }
-  
   // Sorter resultatene etter plassering
   const sortedResults = [...results].sort((a, b) => a.position - b.position);
   
+  // Get phase-specific header text
+  const getHeaderText = () => {
+    switch (racePhase) {
+      case RacePhase.BEFORE_RACE:
+        return 'Forventede resultater';
+      case RacePhase.DURING_RACE:
+        return 'Foreløpige resultater';
+      case RacePhase.AFTER_RACE:
+        return 'Sluttresultater';
+      default:
+        return 'Resultater';
+    }
+  };
+  
   return (
     <section className="py-8 border-t-2 border-forest-700">
-      <h2 className="text-3xl font-bold mb-6 text-earth-100">Resultater</h2>
+      <h2 className="text-3xl font-bold mb-6 text-earth-100">{getHeaderText()}</h2>
       
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -60,7 +66,15 @@ export default function Results() {
       
       {sortedResults.length === 0 && (
         <div className="bg-forest-800 p-6 rounded-lg text-center mt-4 border border-forest-700">
-          <p className="text-forest-200">Resultatene vil bli publisert etter løpet.</p>
+          <p className="text-forest-200">Ingen resultater er tilgjengelig ennå.</p>
+        </div>
+      )}
+      
+      {racePhase === RacePhase.BEFORE_RACE && (
+        <div className="bg-forest-800 p-4 rounded-lg text-center mt-4 border border-forest-700">
+          <p className="text-forest-200">
+            Dette er forventede resultater basert på tidligere løp. Faktiske resultater vil bli publisert når løpet starter.
+          </p>
         </div>
       )}
     </section>

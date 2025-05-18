@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Countdown from '@/components/Countdown/Countdown';
 import EventInfo from '@/components/EventInfo/EventInfo';
@@ -10,7 +9,7 @@ import Results from '@/components/Results/Results';
 import { RacePhase } from '@/lib/constants';
 import { determineRacePhase } from '@/lib/utils';
 
-export default function Home() {
+export default function ClientApp() {
   const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
   const [isLightTheme, setIsLightTheme] = useState(false);
   
@@ -18,13 +17,11 @@ export default function Home() {
     // Initialize race phase and theme
     setRacePhase(determineRacePhase());
     
-    // Check for saved theme preference (only in browser)
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('grimstad-theme');
-      if (savedTheme === 'light') {
-        setIsLightTheme(true);
-        document.body.classList.add('light-theme');
-      }
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('grimstad-theme');
+    if (savedTheme === 'light') {
+      setIsLightTheme(true);
+      document.body.classList.add('light-theme');
     }
     
     // Update phase every minute
@@ -37,8 +34,6 @@ export default function Home() {
   
   // Toggle theme function
   const toggleTheme = () => {
-    if (typeof window === 'undefined') return; // Guard for server-side
-    
     setIsLightTheme(prev => {
       const newTheme = !prev;
       if (newTheme) {
@@ -79,7 +74,7 @@ export default function Home() {
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
-            <section id="resultater">
+            <section id="malgang">
               <Results />
             </section>
             <section id="livetracking">
@@ -97,7 +92,7 @@ export default function Home() {
               </div>
               <div className="p-4">
                 <nav className="space-y-2">
-                  <a href="#resultater" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
+                  <a href="#malgang" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Resultater
                   </a>
                   <a href="#livetracking" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
