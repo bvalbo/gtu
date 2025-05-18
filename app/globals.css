@@ -3,8 +3,25 @@
 @tailwind utilities;
 
 :root {
+  /* Dark theme (default) */
   --foreground-rgb: 255, 255, 255;
   --background-rgb: 22, 33, 25;
+  --bg-gradient-from: rgb(22, 33, 25);
+  --bg-gradient-to: rgb(51, 31, 25);
+  
+  /* Light theme variables (not active by default) */
+  --light-foreground-rgb: 35, 47, 40;
+  --light-background-rgb: 247, 250, 252;
+  --light-bg-gradient-from: rgb(247, 250, 252);
+  --light-bg-gradient-to: rgb(237, 242, 247);
+}
+
+/* Light theme class that gets applied to the body */
+.light-theme {
+  --foreground-rgb: var(--light-foreground-rgb);
+  --background-rgb: var(--light-background-rgb);
+  --bg-gradient-from: var(--light-bg-gradient-from);
+  --bg-gradient-to: var(--light-bg-gradient-to);
 }
 
 body {
@@ -35,7 +52,7 @@ body {
 
 /* Gradient bakgrunn */
 .bg-gradient-dark {
-  background: linear-gradient(to bottom, rgb(22, 33, 25), rgb(51, 31, 25));
+  background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to));
 }
 
 /* Nedtelling stiler */
@@ -44,7 +61,71 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 }
 
+.light-theme .countdown-container {
+  background: linear-gradient(to right, rgb(101, 184, 138), rgb(176, 127, 78));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+}
+
 .countdown-digit {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-toggle-color, #476858);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.light-theme .theme-toggle {
+  --bg-toggle-color: #40a46e;
+  color: white;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Layout class adjustments for light theme */
+.light-theme .bg-forest-700,
+.light-theme .bg-forest-800,
+.light-theme .bg-forest-900 {
+  background-color: white;
+  border-color: #e2e8f0;
+}
+
+.light-theme .text-white,
+.light-theme .text-forest-100,
+.light-theme .text-forest-200 {
+  color: #2d3748;
+}
+
+.light-theme .text-earth-100,
+.light-theme .text-earth-200,
+.light-theme .text-earth-300 {
+  color: #476858;
+}
+
+.light-theme .border-forest-700,
+.light-theme .border-forest-800 {
+  border-color: #e2e8f0;
 }

@@ -12,18 +12,41 @@ import { determineRacePhase } from '@/lib/utils';
 
 export default function Home() {
   const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+  const [isLightTheme, setIsLightTheme] = useState(false);
   
   useEffect(() => {
-    // Initialiser riktig fase ved første innlasting
+    // Initialize race phase and theme
     setRacePhase(determineRacePhase());
     
-    // Oppdater fase hvert minutt
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('grimstad-theme');
+    if (savedTheme === 'light') {
+      setIsLightTheme(true);
+      document.body.classList.add('light-theme');
+    }
+    
+    // Update phase every minute
     const timer = setInterval(() => {
       setRacePhase(determineRacePhase());
     }, 60000);
     
     return () => clearInterval(timer);
   }, []);
+  
+  // Toggle theme function
+  const toggleTheme = () => {
+    setIsLightTheme(prev => {
+      const newTheme = !prev;
+      if (newTheme) {
+        document.body.classList.add('light-theme');
+        localStorage.setItem('grimstad-theme', 'light');
+      } else {
+        document.body.classList.remove('light-theme');
+        localStorage.setItem('grimstad-theme', 'dark');
+      }
+      return newTheme;
+    });
+  };
   
   return (
     <div className="min-h-screen bg-gradient-trail">
@@ -38,7 +61,7 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Grimstad Terrengultraløp</h1>
-                <p className="text-earth-300 text-sm">18. mai 2025</p>
+                <p className="text-earth-300 text-sm">www.grimstad.run</p>
               </div>
             </div>
           </div>
@@ -110,6 +133,33 @@ export default function Home() {
           </div>
         </div>
       </Container>
+      
+      {/* Theme toggle button */}
+      <button 
+        className="theme-toggle" 
+        onClick={toggleTheme}
+        aria-label={isLightTheme ? "Switch to dark theme" : "Switch to light theme"}
+      >
+        {isLightTheme ? (
+          // Moon icon for dark mode
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        ) : (
+          // Sun icon for light mode
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        )}
+      </button>
     </div>
   );
 }

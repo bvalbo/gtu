@@ -10,21 +10,21 @@ export default function Countdown() {
   const [timeDisplay, setTimeDisplay] = useState(calculateTimeDisplay(RacePhase.BEFORE_RACE));
 
   useEffect(() => {
-    // Initialiser riktig fase ved første innlasting
+    // Initialize correct phase on first load
     setRacePhase(determineRacePhase());
 
-    // Oppdater nedtelling/opptelling hvert sekund
+    // Update countdown/countup every second
     const timer = setInterval(() => {
       const currentPhase = determineRacePhase();
       setRacePhase(currentPhase);
       setTimeDisplay(calculateTimeDisplay(currentPhase));
     }, 1000);
 
-    // Rydde opp når komponenten unmounts
+    // Clean up when component unmounts
     return () => clearInterval(timer);
   }, []);
 
-  // Titler basert på løpets fase
+  // Titles based on race phase
   const getTitle = () => {
     switch (racePhase) {
       case RacePhase.BEFORE_RACE:
@@ -38,16 +38,23 @@ export default function Countdown() {
     }
   };
 
+  // Check if light theme is active
+  const isLightTheme = typeof window !== 'undefined' && document.body.classList.contains('light-theme');
+  
+  // Set text colors based on theme
+  const titleColor = isLightTheme ? "text-forest-800" : "text-white";
+  const textColor = isLightTheme ? "text-forest-700" : "text-gray-300";
+
   return (
     <div className="w-full">
-      <h2 className="text-xl text-center font-semibold mb-2">{getTitle()}</h2>
+      <h2 className={`text-xl text-center font-semibold mb-2 ${titleColor}`}>{getTitle()}</h2>
       <CountdownDisplay 
         timeDisplay={timeDisplay} 
         racePhase={racePhase}
       />
       
       {racePhase === RacePhase.AFTER_RACE && (
-        <p className="text-center mt-4 text-gray-300">
+        <p className={`text-center mt-4 ${textColor}`}>
           Løpet startet 18. mai 2025 kl. 13:00 og er nå avsluttet.
         </p>
       )}

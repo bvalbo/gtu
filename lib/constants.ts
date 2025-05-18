@@ -59,7 +59,7 @@ export const RESULTS_TEMPLATE = [
 
 // Eksempel på live-tracking-linker (kan oppdateres før løpet)
 export const LIVE_TRACKING_LINKS = [
-  { name: 'Løper 1', url: 'https://racemap.com/dummylink1' },
-  { name: 'Løper 2', url: 'https://livetrack.garmin.com/dummylink2' },
-  { name: 'Løper 3', url: 'https://share.garmin.com/dummylink3' }
+  { name: 'Rune Hystad', url: 'https://livetrack.garmin.com/session/be18411b-88d5-855e-b1f1-db4a56f92e00/token/AAAC7190A4F33DBA16647DF32B282081' },
+  { name: 'Finn Oscar Kalrsen', url: 'https://www.strava.com/beacon/yejjedA78NT' },
+  { name: 'Erlend Bjerkestrand', url: 'https://livetrack.garmin.com/session/d9210f96-6176-8fcb-acbb-94df6acb1400/token/CA382658D1A83FDE9ED13C7BC413DDB' }
 ];

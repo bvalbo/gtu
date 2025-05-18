@@ -5,10 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class', // Enable dark mode variant based on class
   theme: {
     extend: {
       colors: {
-        // Natural palette inspired by the trail run poster
+        // Dual color palettes (dark and light versions)
         'forest': {
           50: '#f2f6f3',
           100: '#e0eae3',
@@ -21,6 +22,18 @@ module.exports = {
           800: '#32453b',
           900: '#2b3b32',
           950: '#162119',
+          // Light theme variants
+          'light-50': '#eaf6ee',
+          'light-100': '#d5f0df',
+          'light-200': '#b0e0c2',
+          'light-300': '#8acca6',
+          'light-400': '#65b88a',
+          'light-500': '#40a46e',
+          'light-600': '#338259',
+          'light-700': '#2b6848',
+          'light-800': '#275339',
+          'light-900': '#214530',
+          'light-950': '#0f261a',
         },
         // Earthy brown tones
         'earth': {
@@ -35,6 +48,18 @@ module.exports = {
           800: '#70483a',
           900: '#5f3e33',
           950: '#331f19',
+          // Light theme variants
+          'light-50': '#fcf9f6',
+          'light-100': '#f7efe7',
+          'light-200': '#ecddc8',
+          'light-300': '#e0c9a9',
+          'light-400': '#d4b38a',
+          'light-500': '#c79c6b',
+          'light-600': '#b07f4e',
+          'light-700': '#906341',
+          'light-800': '#734f35',
+          'light-900': '#5e412d',
+          'light-950': '#332415',
         },
         // Trail color for paths
         'trail': {
@@ -47,6 +72,16 @@ module.exports = {
           700: '#6e4e2f',
           800: '#553b25',
           900: '#40301f',
+          // Light theme variants
+          'light-100': '#f7f0e9',
+          'light-200': '#eedecb',
+          'light-300': '#e5cead',
+          'light-400': '#d8ba8f',
+          'light-500': '#cca671',
+          'light-600': '#b98b4f',
+          'light-700': '#96703e',
+          'light-800': '#785932',
+          'light-900': '#604829',
         },
         // Slate for darker backgrounds
         'slate': {
@@ -54,6 +89,11 @@ module.exports = {
           850: '#222b3a',
           900: '#1a202c',
           950: '#0f141e',
+          // Light theme variants
+          'light-800': '#e2e8f0',
+          'light-850': '#edf2f7', 
+          'light-900': '#f7fafc',
+          'light-950': '#ffffff',
         },
       },
       fontFamily: {
@@ -65,7 +105,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-trail': 'linear-gradient(to bottom, rgb(32, 46, 36), rgb(51, 31, 25))',
+        'gradient-trail': 'linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to))',
       },
       gridTemplateColumns: {
         'auto-fill-200': 'repeat(auto-fill, minmax(200px, 1fr))',
