@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { RacePhase } from '@/lib/constants';
 import { CountdownDisplay as CountdownDisplayType } from '@/lib/types';
 
@@ -15,8 +16,9 @@ export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDi
   const containerClasses = () => {
     const baseClasses = "flex justify-center items-center space-x-4 py-6 px-4 rounded-lg";
     
-    // Check if light theme is active
-    const isLightTheme = document.body.classList.contains('light-theme');
+    // Check if light theme is active - safely for SSR
+    const isLightTheme = typeof window !== 'undefined' ? 
+      document.body.classList.contains('light-theme') : false;
     
     if (isLightTheme) {
       if (racePhase === RacePhase.BEFORE_RACE) {
@@ -51,8 +53,15 @@ export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDi
     }
   };
   
-  // Check if light theme is active
-  const isLightTheme = typeof window !== 'undefined' && document.body.classList.contains('light-theme');
+  // We need to use useState and useEffect for theme detection in SSR
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  
+  // Check if light theme is active - safely with useEffect for client-side only
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsLightTheme(document.body.classList.contains('light-theme'));
+    }
+  }, []);
   
   // Set text colors based on theme
   const digitColor = isLightTheme ? "text-forest-800" : "text-white";

@@ -18,11 +18,13 @@ export default function Home() {
     // Initialize race phase and theme
     setRacePhase(determineRacePhase());
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('grimstad-theme');
-    if (savedTheme === 'light') {
-      setIsLightTheme(true);
-      document.body.classList.add('light-theme');
+    // Check for saved theme preference (only in browser)
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('grimstad-theme');
+      if (savedTheme === 'light') {
+        setIsLightTheme(true);
+        document.body.classList.add('light-theme');
+      }
     }
     
     // Update phase every minute
@@ -35,6 +37,8 @@ export default function Home() {
   
   // Toggle theme function
   const toggleTheme = () => {
+    if (typeof window === 'undefined') return; // Guard for server-side
+    
     setIsLightTheme(prev => {
       const newTheme = !prev;
       if (newTheme) {

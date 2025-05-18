@@ -38,12 +38,20 @@ export default function Countdown() {
     }
   };
 
-  // Check if light theme is active
-  const isLightTheme = typeof window !== 'undefined' && document.body.classList.contains('light-theme');
+  // State to track theme
+  const [isLightThemeState, setIsLightThemeState] = useState(false);
+  
+  // Check if light theme is active - move to useEffect
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isLight = document.body.classList.contains('light-theme');
+      setIsLightThemeState(isLight);
+    }
+  }, []);
   
   // Set text colors based on theme
-  const titleColor = isLightTheme ? "text-forest-800" : "text-white";
-  const textColor = isLightTheme ? "text-forest-700" : "text-gray-300";
+  const titleColor = isLightThemeState ? "text-forest-800" : "text-white";
+  const textColor = isLightThemeState ? "text-forest-700" : "text-gray-300";
 
   return (
     <div className="w-full">
