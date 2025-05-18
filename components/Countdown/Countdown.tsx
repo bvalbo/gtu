@@ -8,8 +8,12 @@ import CountdownDisplay from './CountdownDisplay';
 export default function Countdown() {
   const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
   const [timeDisplay, setTimeDisplay] = useState(calculateTimeDisplay(RacePhase.BEFORE_RACE));
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Mark component as mounted
+    setMounted(true);
+    
     // Initialize correct phase on first load
     setRacePhase(determineRacePhase());
 
@@ -38,20 +42,35 @@ export default function Countdown() {
     }
   };
 
-  // State to track theme
+  // Safe state for theme
   const [isLightThemeState, setIsLightThemeState] = useState(false);
   
   // Check if light theme is active - move to useEffect
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof document !== 'undefined') {
       const isLight = document.body.classList.contains('light-theme');
       setIsLightThemeState(isLight);
+      
+      // Setup a mutation observer to track theme changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            setIsLightThemeState(document.body.classList.contains('light-theme'));
+          }
+        });
+      });
+      
+      observer.observe(document.body, { attributes: true });
+      
+      return () => {
+        observer.disconnect();
+      };
     }
   }, []);
   
-  // Set text colors based on theme
-  const titleColor = isLightThemeState ? "text-forest-800" : "text-white";
-  const textColor = isLightThemeState ? "text-forest-700" : "text-gray-300";
+  // Set text colors based on theme - with safe fallback
+  const titleColor = mounted && isLightThemeState ? "text-forest-800" : "text-white";
+  const textColor = mounted && isLightThemeState ? "text-forest-700" : "text-gray-300";
 
   return (
     <div className="w-full">

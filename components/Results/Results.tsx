@@ -70,6 +70,15 @@ export default function Results() {
         </div>
       )}
       
+      {racePhase === RacePhase.DURING_RACE && (
+        <div className="bg-forest-800 p-4 rounded-lg text-center mt-4 border border-forest-700">
+          <p className="text-forest-200">
+            <span className="inline-block w-3 h-3 bg-forest-400 rounded-full mr-2 animate-pulse"></span>
+            Resultatene oppdateres fortløpende mens løpet pågår
+          </p>
+        </div>
+      )}
+      
       {racePhase === RacePhase.BEFORE_RACE && (
         <div className="bg-forest-800 p-4 rounded-lg text-center mt-4 border border-forest-700">
           <p className="text-forest-200">

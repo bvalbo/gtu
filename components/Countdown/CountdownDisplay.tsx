@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { RacePhase } from '@/lib/constants';
 import { CountdownDisplay as CountdownDisplayType } from '@/lib/types';
 
@@ -11,12 +12,43 @@ interface CountdownDisplayProps {
 export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDisplayProps) {
   const { days, hours, minutes, seconds } = timeDisplay;
   
+  // Added state for client-side rendering
+  const [mounted, setMounted] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  
+  // Check if light theme is active - safely with useEffect for client-side only
+  useEffect(() => {
+    setMounted(true);
+    
+    // Check if light theme is active
+    if (document.body.classList.contains('light-theme')) {
+      setIsLightTheme(true);
+    }
+    
+    // Setup listener for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setIsLightTheme(document.body.classList.contains('light-theme'));
+        }
+      });
+    });
+    
+    observer.observe(document.body, { attributes: true });
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  
   // Determine classes based on phase and current theme
   const containerClasses = () => {
     const baseClasses = "flex justify-center items-center space-x-4 py-6 px-4 rounded-lg";
     
-    // Check if light theme is active
-    const isLightTheme = document.body.classList.contains('light-theme');
+    if (!mounted) {
+      // Default for server-side rendering
+      return `${baseClasses} bg-gradient-to-r from-forest-800 to-earth-800 shadow-lg`;
+    }
     
     if (isLightTheme) {
       if (racePhase === RacePhase.BEFORE_RACE) {
@@ -50,9 +82,6 @@ export default function CountdownDisplay({ timeDisplay, racePhase }: CountdownDi
       return `${baseClasses} text-3xl md:text-5xl`;
     }
   };
-  
-  // Check if light theme is active
-  const isLightTheme = typeof window !== 'undefined' && document.body.classList.contains('light-theme');
   
   // Set text colors based on theme
   const digitColor = isLightTheme ? "text-forest-800" : "text-white";

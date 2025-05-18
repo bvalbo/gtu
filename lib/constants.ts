@@ -52,7 +52,7 @@ export const TEXTS = {
 
 // Eksempel-resultatliste (kan redigeres manuelt etter løpet)
 export const RESULTS_TEMPLATE = [
-  { position: 1, name: 'Per', time: '00:00:00', notes: '' },
+  { position: 1, name: 'Kristian', time: '5:54:50', notes: '' },
   { position: 2, name: 'Pål', time: '00:00:00', notes: '' },
   { position: 3, name: 'Espen', time: '00:00:00', notes: '' }
 ];
