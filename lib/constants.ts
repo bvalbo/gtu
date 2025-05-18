@@ -2,7 +2,7 @@
 
 // Løpets dato og tidspunkt
 export const RACE_START_DATE = new Date('2025-05-18T13:00:00+02:00'); // 18. mai 2025 kl. 13:00 CEST
-export const RACE_END_TIME = new Date('2025-05-19T00:00:00+02:00');   // 19. mai 2025 kl. 00:00 CEST (11 timer etter start)
+export const RACE_END_TIME = new Date('2025-05-18T21:00:00+02:00');   // 19. mai 2025 kl. 00:00 CEST (11 timer etter start)
 
 // Løpets faser
 export enum RacePhase {
