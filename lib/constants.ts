@@ -60,7 +60,8 @@ export const RESULTS_TEMPLATE = [
   { position: 6, name: 'Sondre', time: '6:47:20', notes: '' },
   { position: 6, name: 'Bjørn Olav', time: '6:47:20', notes: '' },
   { position: 8, name: 'Hans Patrik', time: '7:00:55', notes: '' },
-  { position: 9, name: 'Jon Terje', time: '7:03:05', notes: '' }
+  { position: 9, name: 'Jon Terje', time: '7:03:05', notes: '' },
+  { position: 9, name: 'Johan', time: '7:29:55', notes: '' }
 ];
 
 // Eksempel på live-tracking-linker (kan oppdateres før løpet)
