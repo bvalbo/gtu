@@ -60,6 +60,6 @@ export const RESULTS_TEMPLATE = [
 // Eksempel på live-tracking-linker (kan oppdateres før løpet)
 export const LIVE_TRACKING_LINKS = [
   { name: 'Rune Hystad', url: 'https://livetrack.garmin.com/session/be18411b-88d5-855e-b1f1-db4a56f92e00/token/AAAC7190A4F33DBA16647DF32B282081' },
-  { name: 'Finn Oscar Kalrsen', url: 'https://www.strava.com/beacon/yejjedA78NT' },
+  { name: 'Finn Oscar Kalrsen', url: 'https://livetrack.garmin.com/session/1964bd36-57c4-8915-ab1f-a782bd772a00/token/C28D8FEA7C14C044A54DA9369EE65B86' },
   { name: 'Erlend Bjerkestrand', url: 'https://livetrack.garmin.com/session/d9210f96-6176-8fcb-acbb-94df6acb1400/token/CA382658D1A83FDE9ED13C7BC413DDB' }
 ];
