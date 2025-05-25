@@ -1,5 +1,7 @@
 // Viktige konstanter for ultraløpet
 
+import { TrackerLink } from './types';
+
 // Løpets dato og tidspunkt
 export const RACE_START_DATE = new Date('2025-05-18T13:00:00+02:00'); // 18. mai 2025 kl. 13:00 CEST
 export const RACE_END_TIME = new Date('2025-05-18T21:00:00+02:00');   // 18. mai 2025 kl. 21:00 CEST (8 timer etter start)
@@ -81,4 +83,5 @@ export const RESULTS_TEMPLATE = [
 ];
 
 // Live-tracking er ikke lenger relevant etter løpet
-export const LIVE_TRACKING_LINKS = [];
+// Explicitly type as TrackerLink[] to avoid TypeScript 'never' inference
+export const LIVE_TRACKING_LINKS: TrackerLink[] = [];
