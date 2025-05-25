@@ -2,7 +2,11 @@
 
 // Løpets dato og tidspunkt
 export const RACE_START_DATE = new Date('2025-05-18T13:00:00+02:00'); // 18. mai 2025 kl. 13:00 CEST
-export const RACE_END_TIME = new Date('2025-05-18T21:00:00+02:00');   // 19. mai 2025 kl. 00:00 CEST (11 timer etter start)
+export const RACE_END_TIME = new Date('2025-05-18T21:00:00+02:00');   // 18. mai 2025 kl. 21:00 CEST (8 timer etter start)
+
+// LØPET ER AVSLUTTET - force race phase til AFTER_RACE
+export const FORCE_RACE_PHASE = true;
+export const FORCED_PHASE = 'AFTER_RACE';
 
 // Løpets faser
 export enum RacePhase {
@@ -35,6 +39,11 @@ export const TEXTS = {
   routeText: 'Løypen MÅ være lastet inn på klokke og testet i forkant.',
   routeLink: 'https://strava.app.link/Jo6eC7tB6Sb',
   shoeRecommendation: 'Det er tørt og fint, og løypen har en blanding av sti, grus og litt asfalt, så vi anbefaler terrengsko med god demping.',
+  raceCompleted: {
+    title: 'Løpet er gjennomført!',
+    message: 'Tusen takk til alle som deltok i årets Grimstad Terrengultraløp! Det ble en fantastisk dag med strålende vær og flotte prestasjoner.',
+    stats: 'Totalt 17 løpere gjennomførte løpet, med tider fra 5:54:50 til 8:08:00.'
+  },
   aidStation: {
     title: 'Drikke- og vaffelstasjon med mulighet for dropbag',
     location: 'Byggefeltet Bakken etter ca 21 km',
@@ -50,7 +59,7 @@ export const TEXTS = {
   }
 };
 
-// Eksempel-resultatliste (kan redigeres manuelt etter løpet)
+// Sluttresultater fra løpet
 export const RESULTS_TEMPLATE = [
   { position: 1, name: 'Kristian', time: '5:54:50', notes: '' },
   { position: 2, name: 'Erlend', time: '6:02:55', notes: '' },
@@ -71,9 +80,5 @@ export const RESULTS_TEMPLATE = [
   { position: 17, name: 'Kim', time: '8:08:00', notes: '' }
 ];
 
-// Eksempel på live-tracking-linker (kan oppdateres før løpet)
-export const LIVE_TRACKING_LINKS = [
-  { name: 'Rune Hystad', url: 'https://livetrack.garmin.com/session/be18411b-88d5-855e-b1f1-db4a56f92e00/token/AAAC7190A4F33DBA16647DF32B282081' },
-  { name: 'Finn Oscar Kalrsen', url: 'https://livetrack.garmin.com/session/1964bd36-57c4-8915-ab1f-a782bd772a00/token/C28D8FEA7C14C044A54DA9369EE65B86' },
-  { name: 'Erlend Bjerkestrand', url: 'https://livetrack.garmin.com/session/d9210f96-6176-8fcb-acbb-94df6acb1400/token/CA382658D1A83FDE9ED13C7BC413DDB' }
-];
+// Live-tracking er ikke lenger relevant etter løpet
+export const LIVE_TRACKING_LINKS = [];

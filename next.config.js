@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable images from Strava and Garmin domains
+  // Enable images from various domains
   images: {
     domains: ['strava.com', 'beacon.strava.com', 'connect.garmin.com', 'livetrack.garmin.com'],
+    // Allow local images
+    unoptimized: false,
   },
-  // Set output to export for static site generation without SSR
-  output: 'export',
+  
+  // Remove static export since we need API routes for the gallery
+  // output: 'export', // Commented out to enable API routes
   
   // Redirect root domain to www subdomain (optional)
   async redirects() {
@@ -22,6 +25,16 @@ const nextConfig = {
       //   destination: 'https://www.grimstad.run/',
       //   permanent: true,
       // },
+    ];
+  },
+  
+  // Ensure API routes work correctly
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: '/api/:path*',
+      },
     ];
   },
 };

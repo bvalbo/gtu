@@ -1,12 +1,17 @@
 // Hjelpefunksjoner for ultraløp-nettsiden
 
-import { RacePhase, RACE_START_DATE, RACE_END_TIME } from './constants';
+import { RacePhase, RACE_START_DATE, RACE_END_TIME, FORCE_RACE_PHASE, FORCED_PHASE } from './constants';
 import { CountdownDisplay } from './types';
 
 /**
  * Bestemmer hvilken fase løpet er i basert på nåværende tid
  */
 export function determineRacePhase(): RacePhase {
+  // Hvis vi tvinger en bestemt fase (løpet er over)
+  if (FORCE_RACE_PHASE && FORCED_PHASE === 'AFTER_RACE') {
+    return RacePhase.AFTER_RACE;
+  }
+  
   const now = new Date();
   
   if (now < RACE_START_DATE) {
@@ -22,6 +27,11 @@ export function determineRacePhase(): RacePhase {
  * Beregner gjenstående/medgått tid for nedtelling/opptelling
  */
 export function calculateTimeDisplay(currentPhase: RacePhase): CountdownDisplay {
+  // Hvis løpet er over, returner null
+  if (currentPhase === RacePhase.AFTER_RACE) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+  
   const now = new Date();
   let diff: number;
   

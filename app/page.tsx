@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Countdown from '@/components/Countdown/Countdown';
 import EventInfo from '@/components/EventInfo/EventInfo';
 import LiveTracking from '@/components/LiveTracking/LiveTracking';
 import Results from '@/components/Results/Results';
-import { RacePhase } from '@/lib/constants';
+import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
+import { RacePhase, TEXTS } from '@/lib/constants';
 import { determineRacePhase } from '@/lib/utils';
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
       document.body.classList.add('light-theme');
     }
     
-    // Update phase every minute
+    // Update phase every minute (though it's now forced to AFTER_RACE)
     const timer = setInterval(() => {
       setRacePhase(determineRacePhase());
     }, 60000);
@@ -51,6 +51,12 @@ export default function Home() {
       return newTheme;
     });
   };
+
+  // Theme-aware classes
+  const titleColor = mounted && isLightTheme ? 'text-forest-800' : 'text-white';
+  const subtitleColor = mounted && isLightTheme ? 'text-forest-600' : 'text-earth-300';
+  const completedBg = mounted && isLightTheme ? 'bg-green-50 border-green-200' : 'bg-green-900 bg-opacity-30 border-green-700';
+  const completedText = mounted && isLightTheme ? 'text-green-800' : 'text-green-200';
   
   return (
     <div className="min-h-screen bg-gradient-trail">
@@ -73,15 +79,41 @@ export default function Home() {
       </header>
       
       <Container className="py-6">
-        <div className={`mb-8 ${racePhase !== RacePhase.AFTER_RACE ? 'lg:mb-12' : 'mb-8'}`}>
-          <Countdown />
-        </div>
+        {/* Hero section - only show countdown if race is not over */}
+        {racePhase !== RacePhase.AFTER_RACE && (
+          <div className="mb-8 lg:mb-12">
+            <Countdown />
+          </div>
+        )}
+
+        {/* Race completed banner */}
+        {racePhase === RacePhase.AFTER_RACE && (
+          <div className={`${completedBg} border-2 rounded-lg p-6 mb-8 text-center`}>
+            <h2 className={`text-3xl font-bold mb-2 ${completedText}`}>
+              {TEXTS.raceCompleted.title}
+            </h2>
+            <p className={`text-lg mb-3 ${completedText}`}>
+              {TEXTS.raceCompleted.message}
+            </p>
+            <p className={`${completedText} font-medium`}>
+              {TEXTS.raceCompleted.stats}
+            </p>
+          </div>
+        )}
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
             <section id="resultater">
               <Results />
             </section>
+            
+            {/* Only show gallery if race is completed */}
+            {racePhase === RacePhase.AFTER_RACE && (
+              <section id="bildegalleri">
+                <PhotoGallery />
+              </section>
+            )}
+            
             <section id="livetracking">
               <LiveTracking />
             </section>
@@ -100,6 +132,11 @@ export default function Home() {
                   <a href="#resultater" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Resultater
                   </a>
+                  {racePhase === RacePhase.AFTER_RACE && (
+                    <a href="#bildegalleri" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
+                      Bildegalleri
+                    </a>
+                  )}
                   <a href="#livetracking" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Live-tracking
                   </a>
@@ -116,23 +153,28 @@ export default function Home() {
               </div>
               
               <div className="p-4 border-t border-forest-700">
-                <h3 className="font-medium mb-2">Været i Grimstad</h3>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <svg className="h-8 w-8 text-yellow-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                    <span className="text-white text-lg">18°C</span>
+                <h3 className="font-medium mb-2">Løpet 18. mai</h3>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-forest-200 text-sm">Status:</span>
+                    <span className="text-green-400 font-medium">Gjennomført</span>
                   </div>
-                  <span className="text-forest-200">Sol, lett bris</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-forest-200 text-sm">Deltagere:</span>
+                    <span className="text-white">17 løpere</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-forest-200 text-sm">Vinnertid:</span>
+                    <span className="text-yellow-400 font-mono">5:54:50</span>
+                  </div>
                 </div>
               </div>
               
-              {racePhase === RacePhase.BEFORE_RACE && (
+              {racePhase === RacePhase.AFTER_RACE && (
                 <div className="p-4 bg-earth-800 bg-opacity-50">
-                  <h3 className="font-medium mb-2">Påminnelse</h3>
+                  <h3 className="font-medium mb-2">Takk for i år!</h3>
                   <p className="text-earth-100 text-sm">
-                    Husk å laste inn løypen på klokken din og teste den i forkant!
+                    Tusen takk til alle som deltok. Vi ses neste år for en ny utgave av Grimstad Terrengultraløp!
                   </p>
                 </div>
               )}
