@@ -8,7 +8,7 @@ export const RACE_END_TIME = new Date('2026-05-10T21:45:00+02:00');   // 10. mai
 
 // Løpet er ikke startet ennå
 export const FORCE_RACE_PHASE = false;
-export const FORCED_PHASE = 'BEFORE_RACE';
+export const FORCED_PHASE: 'BEFORE_RACE' | 'DURING_RACE' | 'AFTER_RACE' = 'BEFORE_RACE';
 
 // Løpets faser
 export enum RacePhase {

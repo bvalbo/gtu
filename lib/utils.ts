@@ -7,9 +7,15 @@ import { CountdownDisplay } from './types';
  * Bestemmer hvilken fase løpet er i basert på nåværende tid
  */
 export function determineRacePhase(): RacePhase {
-  // Hvis vi tvinger en bestemt fase (løpet er over)
-  if (FORCE_RACE_PHASE && FORCED_PHASE === 'AFTER_RACE') {
-    return RacePhase.AFTER_RACE;
+  // Hvis vi tvinger en bestemt fase
+  if (FORCE_RACE_PHASE) {
+    if (FORCED_PHASE === 'AFTER_RACE') {
+      return RacePhase.AFTER_RACE;
+    } else if (FORCED_PHASE === 'DURING_RACE') {
+      return RacePhase.DURING_RACE;
+    } else {
+      return RacePhase.BEFORE_RACE;
+    }
   }
   
   const now = new Date();
