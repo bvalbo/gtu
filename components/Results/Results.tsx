@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Runner } from '@/lib/types';
-import { RacePhase } from '@/lib/constants';
 import { determineRacePhase } from '@/lib/utils';
-import { RESULTS_TEMPLATE } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 import ResultRow from './ResultRow';
 
 export default function Results() {
+  const { RESULTS_TEMPLATE, RacePhase } = useRaceConstants();
   const [results, setResults] = useState<Runner[]>(RESULTS_TEMPLATE);
-  const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+  const [racePhase, setRacePhase] = useState(RacePhase.BEFORE_RACE);
   const [isVisible, setIsVisible] = useState(true); // Always visible now
   
   useEffect(() => {

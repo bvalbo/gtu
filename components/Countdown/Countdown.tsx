@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { RacePhase } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 import { calculateTimeDisplay, determineRacePhase } from '@/lib/utils';
 import CountdownDisplay from './CountdownDisplay';
 
 export default function Countdown() {
-  const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+  const { RacePhase, RACE_START_DATE } = useRaceConstants();
+  const [racePhase, setRacePhase] = useState(RacePhase.BEFORE_RACE);
   const [timeDisplay, setTimeDisplay] = useState(calculateTimeDisplay(RacePhase.BEFORE_RACE));
   const [mounted, setMounted] = useState(false);
 
@@ -82,7 +83,7 @@ export default function Countdown() {
       
       {racePhase === RacePhase.AFTER_RACE && (
         <p className={`text-center mt-4 ${textColor}`}>
-          Løpet startet 18. mai 2025 kl. 13:00 og er nå avsluttet.
+          Løpet startet {RACE_START_DATE.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} kl. {RACE_START_DATE.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' })} og er nå avsluttet.
         </p>
       )}
     </div>

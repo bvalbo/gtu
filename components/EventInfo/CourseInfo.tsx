@@ -1,8 +1,9 @@
 'use client';
 
-import { TEXTS } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 
 export default function CourseInfo() {
+  const { TEXTS } = useRaceConstants();
   return (
     <div className="my-8">
       <h2 className="text-2xl font-bold mb-4 text-earth-100">Løypen</h2>
@@ -20,9 +21,12 @@ export default function CourseInfo() {
               <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 20L3 17V7L9 4M9 20L15 17M9 20V4M15 17L21 20V10L15 7M15 17V7M9 10L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Se løype på Strava
+              Se løype på Strava (fjorårets trasé)
             </span>
           </a>
+          {TEXTS.routeNote && (
+            <p className="text-forest-300 text-sm mt-2 italic">{TEXTS.routeNote}</p>
+          )}
         </div>
         
         <div className="p-3 bg-forest-700 rounded mt-4">

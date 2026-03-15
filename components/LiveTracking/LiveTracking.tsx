@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { RacePhase } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 import { determineRacePhase } from '@/lib/utils';
-import { LIVE_TRACKING_LINKS } from '@/lib/constants';
 import TrackerEmbed from './TrackerEmbed';
 
 export default function LiveTracking() {
-  const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+  const { RacePhase, LIVE_TRACKING_LINKS } = useRaceConstants();
+  const [racePhase, setRacePhase] = useState(RacePhase.BEFORE_RACE);
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {

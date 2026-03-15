@@ -1,14 +1,15 @@
 'use client';
 
-import { RacePhase } from '@/lib/constants';
 import { determineRacePhase } from '@/lib/utils';
-import { TEXTS, IMPORTANT_TIMES } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 import CourseInfo from './CourseInfo';
 import ContactInfo from './ContactInfo';
+import StartList from '@/components/StartList/StartList';
 import { useState, useEffect } from 'react';
 
 export default function EventInfo() {
-  const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+  const { TEXTS, IMPORTANT_TIMES, RacePhase } = useRaceConstants();
+  const [racePhase, setRacePhase] = useState(RacePhase.BEFORE_RACE);
   
   useEffect(() => {
     setRacePhase(determineRacePhase());
@@ -64,7 +65,7 @@ export default function EventInfo() {
           <div className="bg-forest-700 p-4 rounded-lg mb-8 animate-pulse border border-forest-600">
             <h2 className="text-2xl font-bold mb-2 text-earth-100">Løpet pågår!</h2>
             <p className="text-forest-100">
-              Løpet startet klokken 13:00 den 18. mai. Følg med på live-tracking seksjonen nedenfor for å se hvordan det går med løperne!
+              Løpet startet klokken 10:45 den 10. mai. Følg med på live-tracking seksjonen nedenfor for å se hvordan det går med løperne!
             </p>
           </div>
         );
@@ -92,6 +93,41 @@ export default function EventInfo() {
       <div className="bg-earth-800 p-4 rounded-lg mb-8 border border-earth-700">
         <p className="text-white font-bold text-lg">{TEXTS.disclaimer}</p>
       </div>
+      
+      {/* Velkomsttekst - kun før løpet */}
+      {racePhase === RacePhase.BEFORE_RACE && TEXTS.welcome && (
+        <div className="mb-8">
+          <div className="bg-forest-800 p-6 rounded-lg border border-forest-700">
+            <p className="text-forest-100 mb-4 leading-relaxed">{TEXTS.welcome}</p>
+            {TEXTS.routeDescription && (
+              <p className="text-forest-200 leading-relaxed">{TEXTS.routeDescription}</p>
+            )}
+          </div>
+        </div>
+      )}
+      
+      {/* Påmeldingsinformasjon - kun før løpet */}
+      {racePhase === RacePhase.BEFORE_RACE && TEXTS.registration && (
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-earth-100">Påmelding</h2>
+          <div className="bg-forest-800 p-6 rounded-lg border border-forest-700">
+            <p className="text-white text-lg font-medium mb-2">{TEXTS.registration}</p>
+            <div className="mt-4 p-3 bg-forest-700 rounded">
+              <p className="text-forest-100">
+                <span className="font-semibold">Vipps:</span> 100kr til 482 65 643
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Startliste - kun før løpet */}
+      {racePhase === RacePhase.BEFORE_RACE && (
+        <div className="mb-8" id="startliste">
+          <h2 className="text-2xl font-bold mb-4 text-earth-100">Startliste</h2>
+          <StartList />
+        </div>
+      )}
       
       {renderPhaseSpecificInfo()}
       

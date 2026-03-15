@@ -1,19 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Container from '@/components/ui/Container';
-import Countdown from '@/components/Countdown/Countdown';
 import EventInfo from '@/components/EventInfo/EventInfo';
 import LiveTracking from '@/components/LiveTracking/LiveTracking';
 import Results from '@/components/Results/Results';
 import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
-import { RacePhase, TEXTS } from '@/lib/constants';
-import { determineRacePhase } from '@/lib/utils';
+import { RacePhase, TEXTS } from '@/lib/constants-2025';
 import { RaceYearProvider } from '@/lib/RaceYearContext';
+import Link from 'next/link';
 
-export default function Home() {
-  const [racePhase, setRacePhase] = useState<RacePhase>(RacePhase.BEFORE_RACE);
+export default function Archive2025() {
+  // Archive side skal alltid vise AFTER_RACE fase
+  const [racePhase] = useState<RacePhase>(RacePhase.AFTER_RACE);
   const [isLightTheme, setIsLightTheme] = useState(false);
   const [mounted, setMounted] = useState(false);
   
@@ -21,22 +20,12 @@ export default function Home() {
     // Set mounted to true after component mounts
     setMounted(true);
     
-    // Initialize race phase and theme
-    setRacePhase(determineRacePhase());
-    
     // Check for saved theme preference (only in browser)
     const savedTheme = localStorage.getItem('grimstad-theme');
     if (savedTheme === 'light') {
       setIsLightTheme(true);
       document.body.classList.add('light-theme');
     }
-    
-    // Update phase every minute
-    const timer = setInterval(() => {
-      setRacePhase(determineRacePhase());
-    }, 60000);
-    
-    return () => clearInterval(timer);
   }, []);
   
   // Toggle theme function
@@ -61,7 +50,7 @@ export default function Home() {
   const completedText = mounted && isLightTheme ? 'text-green-800' : 'text-green-200';
   
   return (
-    <RaceYearProvider year={2026}>
+    <RaceYearProvider year={2025}>
       <div className="min-h-screen bg-gradient-trail">
       <header className="bg-forest-900 border-b border-forest-800">
         <Container>
@@ -73,16 +62,16 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Grimstad Terrengultraløp</h1>
+                <h1 className="text-xl font-bold text-white">Grimstad Terrengultraløp 2025</h1>
                 <p className="text-earth-300 text-sm">www.grimstad.run</p>
               </div>
             </div>
             <div>
               <Link 
-                href="/2025" 
+                href="/" 
                 className="text-earth-300 hover:text-white transition-colors text-sm"
               >
-                Se resultater fra 2025 →
+                ← Tilbake til 2026
               </Link>
             </div>
           </div>
@@ -90,43 +79,29 @@ export default function Home() {
       </header>
       
       <Container className="py-6">
-        {/* Hero section - only show countdown if race is not over */}
-        {racePhase !== RacePhase.AFTER_RACE && (
-          <div className="mb-8 lg:mb-12">
-            <Countdown />
-          </div>
-        )}
-
         {/* Race completed banner */}
-        {racePhase === RacePhase.AFTER_RACE && (
-          <div className={`${completedBg} border-2 rounded-lg p-6 mb-8 text-center`}>
-            <h2 className={`text-3xl font-bold mb-2 ${completedText}`}>
-              {TEXTS.raceCompleted.title}
-            </h2>
-            <p className={`text-lg mb-3 ${completedText}`}>
-              {TEXTS.raceCompleted.message}
-            </p>
-            <p className={`${completedText} font-medium`}>
-              {TEXTS.raceCompleted.stats}
-            </p>
-          </div>
-        )}
+        <div className={`${completedBg} border-2 rounded-lg p-6 mb-8 text-center`}>
+          <h2 className={`text-3xl font-bold mb-2 ${completedText}`}>
+            {TEXTS.raceCompleted.title}
+          </h2>
+          <p className={`text-lg mb-3 ${completedText}`}>
+            {TEXTS.raceCompleted.message}
+          </p>
+          <p className={`${completedText} font-medium`}>
+            {TEXTS.raceCompleted.stats}
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
-            {/* Only show results during and after race */}
-            {racePhase !== RacePhase.BEFORE_RACE && (
-              <section id="resultater">
-                <Results />
-              </section>
-            )}
+            <section id="resultater">
+              <Results />
+            </section>
             
-            {/* Only show gallery if race is completed */}
-            {racePhase === RacePhase.AFTER_RACE && (
-              <section id="bildegalleri">
-                <PhotoGallery />
-              </section>
-            )}
+            {/* Bildegalleri fra 2025 */}
+            <section id="bildegalleri">
+              <PhotoGallery />
+            </section>
             
             <section id="livetracking">
               <LiveTracking />
@@ -143,21 +118,12 @@ export default function Home() {
               </div>
               <div className="p-4">
                 <nav className="space-y-2">
-                  {racePhase === RacePhase.BEFORE_RACE && (
-                    <a href="#startliste" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
-                      Startliste
-                    </a>
-                  )}
-                  {racePhase !== RacePhase.BEFORE_RACE && (
-                    <a href="#resultater" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
-                      Resultater
-                    </a>
-                  )}
-                  {racePhase === RacePhase.AFTER_RACE && (
-                    <a href="#bildegalleri" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
-                      Bildegalleri
-                    </a>
-                  )}
+                  <a href="#resultater" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
+                    Resultater
+                  </a>
+                  <a href="#bildegalleri" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
+                    Bildegalleri
+                  </a>
                   <a href="#livetracking" className="block p-2 hover:bg-forest-700 rounded transition-colors text-forest-100 hover:text-white">
                     Live-tracking
                   </a>
@@ -174,47 +140,29 @@ export default function Home() {
               </div>
               
               <div className="p-4 border-t border-forest-700">
-                <h3 className="font-medium mb-2">Løpet 10. mai 2026</h3>
+                <h3 className="font-medium mb-2">Løpet 18. mai 2025</h3>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-forest-200 text-sm">Status:</span>
-                    <span className="text-yellow-400 font-medium">
-                      {racePhase === RacePhase.BEFORE_RACE && 'Kommer snart'}
-                      {racePhase === RacePhase.DURING_RACE && 'Pågår nå'}
-                      {racePhase === RacePhase.AFTER_RACE && 'Gjennomført'}
-                    </span>
+                    <span className="text-green-400 font-medium">Gjennomført</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-forest-200 text-sm">Start:</span>
-                    <span className="text-white">10:45</span>
+                    <span className="text-forest-200 text-sm">Deltagere:</span>
+                    <span className="text-white">17 løpere</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-forest-200 text-sm">Startsted:</span>
-                    <span className="text-white text-right text-sm">Norkirken Grimstad</span>
+                    <span className="text-forest-200 text-sm">Vinnertid:</span>
+                    <span className="text-yellow-400 font-mono">5:54:50</span>
                   </div>
                 </div>
               </div>
               
-              {racePhase === RacePhase.AFTER_RACE && (
-                <div className="p-4 bg-earth-800 bg-opacity-50">
-                  <h3 className="font-medium mb-2">Takk for i år!</h3>
-                  <p className="text-earth-100 text-sm">
-                    Tusen takk til alle som deltok. Vi ses neste år for en ny utgave av Grimstad Terrengultraløp!
-                  </p>
-                </div>
-              )}
-              
-              {racePhase === RacePhase.BEFORE_RACE && (
-                <div className="p-4 bg-earth-800 bg-opacity-50">
-                  <h3 className="font-medium mb-2">Tidligere arrangementer</h3>
-                  <Link 
-                    href="/2025"
-                    className="text-earth-100 hover:text-white text-sm block mb-2 transition-colors"
-                  >
-                    → Resultater fra 2025
-                  </Link>
-                </div>
-              )}
+              <div className="p-4 bg-earth-800 bg-opacity-50">
+                <h3 className="font-medium mb-2">Takk for i år!</h3>
+                <p className="text-earth-100 text-sm">
+                  Tusen takk til alle som deltok. Vi ses neste år for en ny utgave av Grimstad Terrengultraløp!
+                </p>
+              </div>
             </div>
           </div>
         </div>

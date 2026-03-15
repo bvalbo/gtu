@@ -1,8 +1,9 @@
 'use client';
 
-import { CONTACTS } from '@/lib/constants';
+import { useRaceConstants } from '@/lib/RaceYearContext';
 
 export default function ContactInfo() {
+  const { CONTACTS } = useRaceConstants();
   return (
     <div className="my-8">
       <h2 className="text-2xl font-bold mb-4 text-earth-100">Kontaktpersoner</h2>
