@@ -3,8 +3,8 @@
 import { TrackerLink } from './types';
 
 // Løpets dato og tidspunkt
-export const RACE_START_DATE = new Date('2026-05-10T10:45:00+02:00'); // 10. mai 2026 kl. 10:45 CEST
-export const RACE_END_TIME = new Date('2026-05-10T21:45:00+02:00');   // 10. mai 2026 kl. 21:45 CEST (11 timer etter start)
+export const RACE_START_DATE = new Date('2026-05-10T13:00:00+02:00'); // 10. mai 2026 kl. 13:00 CEST
+export const RACE_END_TIME = new Date('2026-05-10T21:00:00+02:00');   // 10. mai 2026 kl. 21:00 CEST (11 timer etter start)
 
 // Løpet er ikke startet ennå
 export const FORCE_RACE_PHASE = false;
@@ -26,8 +26,8 @@ export const CONTACTS = [
 
 // Viktige tidspunkter
 export const IMPORTANT_TIMES = [
-  { title: 'Oppmøte for kort briefing', time: '10:15', location: 'Utenfor hovedinngangen av Norkirken i Grimstad' },
-  { title: 'Startskuddet', time: '10:45', location: 'Utenfor Norkirken Grimstad' }
+  { title: 'Oppmøte for kort briefing', time: '12:30', location: 'Utenfor hovedinngangen av Norkirken i Grimstad' },
+  { title: 'Startskuddet', time: '13:00', location: 'Utenfor Norkirken Grimstad' }
 ];
 
 // Standardtekster
@@ -60,7 +60,7 @@ export const TEXTS = {
     firepit: 'I målområdet fyrer vi i gang bålpanne og setter opp stoler så man kan slå av en prat',
     grilling: 'Det vil være mulighet for å grille om man har med seg noe mat i kjøleboks f.eks.',
     stayingAfter: 'Veldig hyggelig om vi er en del som blir igjen litt.',
-    headlamp: 'Selv om vi starter kl 10:45, så skal det være godt med tid før det blir mørkt, så det er ikke behov for hodelykt (med mindre du bruker over 11 timer).'
+    headlamp: 'Selv om vi starter kl 13:00, så skal det være godt med tid før det blir mørkt, så det er ikke behov for hodelykt (med mindre du bruker over 9 timer).'
   }
 };
 
