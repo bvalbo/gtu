@@ -65,7 +65,7 @@ export default function EventInfo() {
           <div className="bg-forest-700 p-4 rounded-lg mb-8 animate-pulse border border-forest-600">
             <h2 className="text-2xl font-bold mb-2 text-earth-100">Løpet pågår!</h2>
             <p className="text-forest-100">
-              Løpet startet klokken 10:45 den 10. mai. Følg med på live-tracking seksjonen nedenfor for å se hvordan det går med løperne!
+              Løpet startet klokken 13:00 den 10. mai. Følg med på live-tracking seksjonen nedenfor for å se hvordan det går med løperne!
             </p>
           </div>
         );

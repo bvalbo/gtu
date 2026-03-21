@@ -186,7 +186,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-forest-200 text-sm">Start:</span>
-                    <span className="text-white">10:45</span>
+                    <span className="text-white">13:00</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-forest-200 text-sm">Startsted:</span>
