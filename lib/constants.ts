@@ -39,7 +39,7 @@ export const TEXTS = {
   routeDescription: 'Løypen går blant annet innom vestlandske hovedvei, barnevandrerstien, og flere av heiene som omkranser sentrum. Navigering skjer via GPX fil.',
   registration: 'Skal du delta, så vippser du 100kr til 482 65 643 og trykker "Skal" på Facebook-arrangementet.',
   facebookText: 'Viktig å trykke "Skal" på Facebook-arrangementet (link kommer snart)',
-  facebookLink: '#', // Oppdater når lenke er klar
+  facebookLink: 'https://www.facebook.com/events/s/grimstad-terrengultra/2116324909208880',
   routeText: 'Løypen MÅ være lastet inn på klokke og testet i forkant.',
   routeLink: 'https://strava.app.link/dGukuOfwpTb',
   routeNote: 'Dette er fjorårets trasé. Noen mindre justeringer gjøres fortløpende så ny link vil legges ut nærmere løpsdato.',
