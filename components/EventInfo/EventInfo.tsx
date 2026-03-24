@@ -117,6 +117,21 @@ export default function EventInfo() {
                 <span className="font-semibold">Vipps:</span> 100kr til 482 65 643
               </p>
             </div>
+            <div className="mt-4 p-3 bg-forest-700 rounded">
+              <p className="text-forest-100">
+                <a 
+                  href={TEXTS.facebookLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-earth-300 hover:text-earth-200 underline inline-flex items-center"
+                >
+                  Trykk "Skal" på Facebook-arrangement
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       )}

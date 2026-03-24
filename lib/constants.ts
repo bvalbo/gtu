@@ -38,7 +38,7 @@ export const TEXTS = {
   welcome: 'Velkommen til Grimstad terrengultra 2026! Traséen på 52 km er godkjent av både Statsforvalteren og kommunen i år, men vil fremdeles ha preg som et "venners venner løpetur", da det ikke står en organisasjon bak, men det er en sosial happening hvor du får anledning til å løpe sammen med andre, eller i ditt eget tempo i flotte omgivelser i Grimstad.',
   routeDescription: 'Løypen går blant annet innom vestlandske hovedvei, barnevandrerstien, og flere av heiene som omkranser sentrum. Navigering skjer via GPX fil.',
   registration: 'Skal du delta, så vippser du 100kr til 482 65 643 og trykker "Skal" på Facebook-arrangementet.',
-  facebookText: 'Viktig å trykke "Skal" på Facebook-arrangementet (link kommer snart)',
+  facebookText: 'Viktig å trykke "Skal" på Facebook-arrangementet',
   facebookLink: 'https://www.facebook.com/events/s/grimstad-terrengultra/2116324909208880',
   routeText: 'Løypen MÅ være lastet inn på klokke og testet i forkant.',
   routeLink: 'https://strava.app.link/dGukuOfwpTb',
