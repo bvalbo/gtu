@@ -41,7 +41,7 @@ export const TEXTS = {
   facebookText: 'Viktig å trykke "Skal" på Facebook-arrangementet',
   facebookLink: 'https://www.facebook.com/events/s/grimstad-terrengultra/2116324909208880',
   routeText: 'Løypen MÅ være lastet inn på klokke og testet i forkant.',
-  routeLink: 'https://strava.app.link/dGukuOfwpTb',
+  routeLink: 'https://strava.app.link/rerXnzmGQ2b',
   routeNote: 'Dette er fjorårets trasé. Noen mindre justeringer gjøres fortløpende så ny link vil legges ut nærmere løpsdato.',
   shoeRecommendation: 'Traséen har en blanding av sti, grus og litt asfalt, så vi anbefaler terrengsko med god demping.',
   raceCompleted: {
