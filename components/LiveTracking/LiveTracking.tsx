@@ -80,12 +80,6 @@ export default function LiveTracking() {
         </div>
       )}
       
-      <div className="mt-8 p-4 bg-earth-800 bg-opacity-40 rounded-lg border border-forest-700">
-        <h3 className="text-xl font-semibold mb-2 text-earth-100">Har du en tracking-lenke?</h3>
-        <p className="text-forest-200 mb-4">
-          Send din Strava Beacon eller Garmin LiveTrack-lenke til Bjørnar på telefon: 924 92 316
-        </p>
-      </div>
     </section>
   );
 }
