@@ -68,10 +68,12 @@ export const TEXTS = {
 export const RESULTS_TEMPLATE = [
   { position: 1, name: 'Kim Robin', time: '5:15:59', notes: '' },
   { position: 2, name: 'Sondre', time: '6:22:20', notes: '' },
-  { position: 3, name: 'Hege', time: '10:24:40', notes: '' },
-  { position: 4, name: 'Bård', time: '', notes: 'DNF; 43km' },
-  { position: 4, name: 'Finn Oscar', time: '', notes: 'DNF; 43km' },
-  { position: 4, name: 'Bjørnar', time: '', notes: 'DNF; 37km' }
+  { position: 3, name: 'Ida', time: '8:05:00', notes: '' },
+  { position: 3, name: 'Trond Jarle', time: '8:05:00', notes: '' },
+  { position: 5, name: 'Hege', time: '10:24:40', notes: '' },
+  { position: '-', name: 'Bård', time: '', notes: 'DNF; 43km' },
+  { position: '-', name: 'Finn Oscar', time: '', notes: 'DNF; 43km' },
+  { position: '-', name: 'Bjørnar', time: '', notes: 'DNF; 37km' }
 ];
 
 // Live-tracking links (oppdateres når løpet starter)
