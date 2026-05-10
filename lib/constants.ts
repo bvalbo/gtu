@@ -66,7 +66,11 @@ export const TEXTS = {
 
 // Sluttresultater fra løpet (oppdateres etter løpet)
 export const RESULTS_TEMPLATE = [
-  // Resultater legges til etter løpet
+  { position: 1, name: 'Kim Robin', time: '5:15:59', notes: '' },
+  { position: 2, name: 'Hege', time: '19:24:406:02:55', notes: '' },
+  { position: 3, name: 'Bård', time: '', notes: 'DNF; 43km' },
+  { position: 3, name: 'Finn Oscar', time: '', notes: 'DNF; 43km' },
+  { position: 3, name: 'Bjørnar', time: '', notes: 'DNF; 37km' }
 ];
 
 // Live-tracking links (oppdateres når løpet starter)
